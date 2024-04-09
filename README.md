@@ -16,7 +16,7 @@
 # 📝구성스크립트
 
 ## Frontend
-<img src= "image/front_script.png" width="60%" height="60%">
+<img src= "images/front_script.png" width="60%" height="60%">
 
 <br/>
 
