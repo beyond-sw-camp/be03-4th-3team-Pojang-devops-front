@@ -1,19 +1,38 @@
-# pojang-front 설치 과정
+# 🎁 포장의 민족
 
-  1.우선 vue 프로젝트를 클론 하기 전 구글에 node.js 다운 받고 LTS 버전을 다운 받기
-  ![image](https://github.com/Team-SNS/Pojang-FE/assets/43448262/2fa663e1-a2c3-4701-9ced-30513e7f30b7)
-  
-  2. 그다음 VS CODE에 가서 터미널 열고 npm install -g @vue/cli 입력
- 
-  3. 설치가 다 되었으면 VS 에 있는 ![image](https://github.com/Team-SNS/Pojang-FE/assets/43448262/b48dccf8-46b2-43d5-8a15-c4d6bb5a8466) 또는 컨트롤 + 쉬프트 + X 를 눌러 플러그인 설치
-     - 플러그인 목록
-       Vue 3 snippets,
-       HTML CSS Support,
-       volar(Vue Language Features (Volar))
-  4. 그 후 깃 클론을 한 후에 해당 파일에 들어가 npm install 설치
-  5. 그 후 node_modules 이라는게 설치 되어 있으면 npm run serve 한 다음 아래 사진 처럼 나오면 끝
-     ![image](https://github.com/Team-SNS/Pojang-FE/assets/43448262/6302393b-b8d0-4718-aa38-a490c0298501)
+<p align="center">
+  <img src= "images/banner.png" width="100%" height="100%">
+</p> 
 
+<br/>
 
+# 📈아키텍처 설계서
 
+## 📍프론트엔드 아키텍처
+<img src= "images/pojang_front_architecture.png" width="100%" height="100%">
 
+<br/>
+
+# 📝구성스크립트
+
+## Frontend
+<img src= "image/front_script.png" width="60%" height="60%">
+
+<br/>
+
+# 📈아키텍처 상세문서
+
+## 프론트엔드
+
+### 1. 개요
+이 아키텍처는 프론트엔드 정적 웹 애플리케이션의 CI/CD 파이프라인 구축과 높은 가용성, 보안을 위한 구성을 목표로 합니다. 
+GitHub 저장소에 코드 변경이 발생할 때마다 자동으로 빌드 및 배포 프로세스가 실행되어 Amazon S3에 정적 웹사이트를 호스팅합니다.
+Amazon CloudFront를 통해 전 세계에 콘텐츠를 빠르게 제공하며, AWS Certificate Manager(ACM)에서 발급받은 SSL 인증서를 적용하여 HTTPS를 통한 안전한 접근을 보장합니다.
+Amazon Route 53은 도메인 이름 시스템(DNS) 서비스를 제공하여 사용자가 웹 애플리케이션에 쉽게 접근할 수 있도록 합니다.
+    
+### 2. 주요 컴포넌트
+- **GitHub Actions**: GitHub 저장소에 코드 변경이 감지되면 자동으로 빌드 및 배포 프로세스를 실행
+- **Amazon S3 버킷**: 빌드된 정적 파일을 호스팅
+- **AWS Certificate Manager**: SSL 인증서를 관리합니다. 인증서는 CloudFront 배포에 연결하여 HTTPS 통신을 가능하게 함
+- **Amazon CloudFront**: S3 버킷에 호스팅된 정적 웹사이트 앞에 위치하는 CDN 서비스로, 캐싱을 통해 전 세계적으로 빠른 콘텐츠 제공을 가능하게 하며, ACM에서 발급받은 SSL 인증서를 사용하여 안전한 HTTPS 연결을 제공
+- **Amazon Route 53**: 웹 애플리케이션의 도메인 이름을 관리하고, CloudFront 배포와 매핑하여 사용자가 웹 애플리케이션에 쉽게 접근할 수 있도록 함
